@@ -32,8 +32,6 @@ services:
       dockerfile: Dockerfile
     container_name: apache_php
     restart: always
-    volumes:
-      - ./www:/var/www/html
     ports:
       - "80:80"
     depends_on:
