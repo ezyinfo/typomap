@@ -27,7 +27,9 @@ services:
       - my_network
 
   apache_php:
-    image: php:8.2-apache
+    build:
+      context: frontapp
+      dockerfile: Dockerfile
     container_name: apache_php
     restart: always
     volumes:
