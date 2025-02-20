@@ -2,7 +2,7 @@
 FROM php:8.2-apache
 
 # Installer les extensions PHP nécessaires (ajuste selon tes besoins)
-RUN docker-php-ext-install mysqli pdo pdo_mysql
+RUN docker-php-ext-install pdo pdo_mysql
 
 
 # Installer les dépendances nécessaires
@@ -18,7 +18,8 @@ RUN a2enmod rewrite
 WORKDIR /var/www/html
 
 # Cloner les sources depuis GitHub
-RUN git clone https://github.com/ezyinfo/typomap.git .
+RUN git clone https://github.com/ezyinfo/typomap.git . && mv www/* ./ && rmdir www
+
 
 # Donner les bons droits aux fichiers
 RUN chown -R www-data:www-data /var/www/html

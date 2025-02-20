@@ -1,0 +1,10 @@
+{
+    "from": "St Malo",
+    "to": "Rennes",
+    "areas": {
+        "Tinteniac": {
+            "x": 8734384,
+            "y": 823846
+        }
+    }
+}
