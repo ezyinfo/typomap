@@ -19,8 +19,6 @@ services:
     restart: always
     environment:
       PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: P@Typo//map
     ports:
       - "5481:80"
     networks:
