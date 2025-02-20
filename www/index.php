@@ -13,7 +13,7 @@
     // Connect to database
 
 
-    $host = "mysql_db";
+    $host = "mysql";
     $base = "typomapdb";
     $user = "typo";
     $pass = "P@TypoM@p";
