@@ -19,6 +19,7 @@ WORKDIR /var/www/html
 
 # Cloner les sources depuis GitHub
 RUN git clone https://github.com/ezyinfo/typomap.git .
+RUN mv www/* ./ && rmdir www
 
 # Donner les bons droits aux fichiers
 RUN chown -R www-data:www-data /var/www/html
