@@ -18,7 +18,7 @@ RUN a2enmod rewrite
 WORKDIR /var/www/html
 
 # Cloner les sources depuis GitHub
-RUN git clone https://github.com/ezyinfo/typomap.git .
+RUN git clone https://github.com/ezyinfo/typomap.git . && git pull
 RUN mv www/* ./ && rmdir www
 
 # Donner les bons droits aux fichiers
