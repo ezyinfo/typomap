@@ -44,7 +44,7 @@ services:
     container_name: apache_php
     restart: always
     ports:
-      - "5480:80"
+      - "5483:80"
     depends_on:
       - mysql
     networks:

@@ -1,7 +1,7 @@
 <?php
 
-require "lib/config.php";
-require "lib/connector.php";
+require "../lib/config.php";
+require "../lib/connector.php";
 
 /* For debug purpose only */
 ini_set('display_errors', 1);
