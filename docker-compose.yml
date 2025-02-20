@@ -22,7 +22,7 @@ services:
       PMA_USER: root
       PMA_PASSWORD: P@Typo//map
     ports:
-      - "5480:80"
+      - "5481:80"
     networks:
       - my_network
 
