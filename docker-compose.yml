@@ -1,13 +1,13 @@
 services:
   mysql:
-    image: mysql:8
+    image: mysql:8.0.35
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: my_database
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: P@Typo//map
+      MYSQL_DATABASE: typomapdb
+      MYSQL_USER: typo
+      MYSQL_PASSWORD: P@Typo//map
     volumes:
       - ./data:/var/lib/mysql
     networks:
@@ -19,10 +19,8 @@ services:
     restart: always
     environment:
       PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: root
     ports:
-      - "8080:80"
+      - "5481:80"
     networks:
       - my_network
 
@@ -33,7 +31,7 @@ services:
     container_name: apache_php
     restart: always
     ports:
-      - "80:80"
+      - "5480:80"
     depends_on:
       - mysql
     networks:
