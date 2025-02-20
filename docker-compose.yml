@@ -24,9 +24,22 @@ services:
     networks:
       - my_network
 
-  apache_php:
+  front:
     build:
       context: frontapp
+      dockerfile: Dockerfile
+    container_name: apache_php
+    restart: always
+    ports:
+      - "5480:80"
+    depends_on:
+      - mysql
+    networks:
+      - my_network
+
+  back_cart:
+    build:
+      context: back_cart
       dockerfile: Dockerfile
     container_name: apache_php
     restart: always
