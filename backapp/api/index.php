@@ -15,8 +15,8 @@
 
     $host = "mysql";
     $base = "typomapdb";
-    $user = "typo";
-    $pass = "Pass--W0rd";
+    $user = "typouser";
+    $pass = "P.assW0rd";
 
 
     // Connect to the base

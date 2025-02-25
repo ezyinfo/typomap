@@ -4,7 +4,7 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: ${MSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MSQL_PASSWORD}
       MYSQL_DATABASE: typomapdb
       MYSQL_USER: ${MSQL_USER}
       MYSQL_PASSWORD: ${MSQL_PASSWORD}
@@ -12,6 +12,13 @@ services:
       - ./data:/var/lib/mysql
     networks:
       - my_network
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    env_file:
+      - .env
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -23,6 +30,8 @@ services:
       - "5481:80"
     networks:
       - my_network
+    env_file:
+      - .env
 
   front:
     build:
