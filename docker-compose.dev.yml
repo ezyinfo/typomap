@@ -4,10 +4,10 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: Pass$$W0rd
+      MYSQL_ROOT_PASSWORD: ${MSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: typomapdb
-      MYSQL_USER: typo
-      MYSQL_PASSWORD: Pass--W0rd
+      MYSQL_USER: ${MSQL_USER}
+      MYSQL_PASSWORD: ${MSQL_PASSWORD}
     volumes:
       - ./data:/var/lib/mysql
     networks:
@@ -28,23 +28,21 @@ services:
     build:
       context: frontapp
       dockerfile: Dockerfile
-    container_name: apache_php
+    container_name: frontapp
     restart: always
     ports:
       - "5480:80"
-    depends_on:
-      - mysql
     networks:
       - my_network
 
-  back_cart:
+  back:
     build:
-      context: back_cart
+      context: backapp
       dockerfile: Dockerfile
-    container_name: apache_php
+    container_name: backapp
     restart: always
     ports:
-      - "5483:80"
+      - "5482:80"
     depends_on:
       - mysql
     networks:

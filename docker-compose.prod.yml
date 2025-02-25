@@ -1,0 +1,42 @@
+services:
+  mysql:
+    image: mysql:8.0.35
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Pass$$W0rd
+      MYSQL_DATABASE: typomapdb
+      MYSQL_USER: typo
+      MYSQL_PASSWORD: Pass--W0rd
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      - my_network
+
+  front:
+    build:
+      context: frontapp
+      dockerfile: Dockerfile
+    container_name: apache_php
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    networks:
+      - my_network
+
+  back_cart:
+    build:
+      context: back_cart
+      dockerfile: Dockerfile
+    container_name: apache_php
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
